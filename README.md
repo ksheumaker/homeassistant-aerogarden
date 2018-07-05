@@ -44,6 +44,9 @@ The component supports multiple gardens and multiple sensors will be created for
 ### Sensors
 * sensor.aerogarden_[GARDEN NAME]_nutrient
 * sensor.aerogarden_[GARDEN NAME]_planted
+
+### Sample screenshot
+![Screen Shot](https://raw.githubusercontent.com/ksheumaker/homeassistant-aerogarden/master/screen_shot.png)
   
 ## TODO
 1. Code cleanup, this is my first HA component - it probably needs some work.
