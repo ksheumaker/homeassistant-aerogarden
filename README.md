@@ -34,9 +34,11 @@ aerogarden:
 
 ## Data available
 The component supports multiple gardens and multiple sensors will be created for each garden.  [GARDEN NAME] will be replaced by whatever you named the garden in the phone app.
+
+### Light
+* light.aerogarden_[GARDEN NAME]_light
   
 ### Binary Sensors (on/off) 
-* binary_sensor.aerogarden_[GARDEN NAME]_light
 * binary_sensor.aerogarden_[GARDEN NAME]_pump
 * binary_sensor.aerogarden_[GARDEN NAME]_need_nutrients
 * binary_sensor.aerogarden_[GARDEN NAME]_need_water
@@ -47,5 +49,5 @@ The component supports multiple gardens and multiple sensors will be created for
   
 ## TODO
 1. Code cleanup, this is my first HA component - it probably needs some work.
-1. Figure out the API call to turn on/off the light and change it to a light component from a binary_sensor
+1. Turning on/off the light isn't working as smoothly as I hoped
 

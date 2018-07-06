@@ -43,6 +43,7 @@ class AerogardenAPI():
 
         self._login_url = "/api/Admin/Login"
         self._status_url = "/api/CustomData/QueryUserDevice"
+        self._update_url = "/api/Custom/UpdateDeviceConfig"
 
         self._headers = {
             "User-Agent" : "HA-Aerogarden/0.1",
@@ -90,6 +91,35 @@ class AerogardenAPI():
 
         return self._data[macaddr][field]
 
+    def light_toggle(self, macaddr):
+        if macaddr not in self._data:
+            return None
+
+        post_data = { 
+            "airGuid" : macaddr, 
+            "chooseGarden" : self.garden_property(macaddr, "chooseGarden"), 
+            "userID" : self._userid,
+            "plantConfig" :  "{ \"lightTemp\" : %d }" % (self.garden_property(macaddr, "lightTemp"))
+        }
+        url = self._host + self._update_url
+
+        try:
+            r = requests.post(url, data=post_data, headers=self._headers)
+        except RequestException:
+            _LOGGER.exception("Error communicating with aerogarden servers")
+            return False
+
+        results = r.json()
+
+        if "code" in results:
+            if results["code"] == 1:
+                return True
+
+        self._error_msg = "Didn't get code 1 from update API call: %s" % (results["msg"])
+        self.update(no_throttle=True)
+
+        return False
+
 
     @property
     def gardens(self):
@@ -97,7 +127,6 @@ class AerogardenAPI():
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
-
         data = {}
         if not self.is_valid_login():
             return 
@@ -149,6 +178,7 @@ def setup(hass, config):
 
     load_platform(hass, 'sensor', DOMAIN)
     load_platform(hass, 'binary_sensor', DOMAIN)
+    load_platform(hass, 'light', DOMAIN)
 
     return True
 

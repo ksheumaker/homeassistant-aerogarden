@@ -52,10 +52,10 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     sensors = []
     sensor_fields = { 
-        "lightStat" : { 
-            "label" : "light",
-            "icon" : "mdi:lightbulb"
-        },
+#        "lightStat" : { 
+#            "label" : "light",
+#            "icon" : "mdi:lightbulb"
+#        },
         "pumpStat" : { 
             "label" : "pump",
             "icon" : "mdi:water-pump",
