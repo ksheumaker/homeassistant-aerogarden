@@ -64,7 +64,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
             "label" : "need nutrients",
             "icon" : "mdi:cup-water",
         },
-       "pupmpLevel" : { 
+       "pumpHydro" : { 
             "label" : "need water",
             "icon" : "mdi:water",
         }
