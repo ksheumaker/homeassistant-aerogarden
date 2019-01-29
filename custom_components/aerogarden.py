@@ -81,6 +81,13 @@ class AerogardenAPI():
 
         return
 
+    def garden_name(self, macaddr):
+        multi_garden = self.garden_property(macaddr, 'chooseGarden')
+        if multi_garden is None:
+            return self.garden_property(macaddr, "plantedName")
+        multi_garden_label = 'left' if multi_garden == 0 else 'right'
+        return self.garden_property(macaddr, "plantedName") + '_' + multi_garden_label
+
     def garden_property(self, macaddr, field):
 
         if macaddr not in self._data:
@@ -89,7 +96,7 @@ class AerogardenAPI():
         if field not in self._data[macaddr]:
             return None
 
-        return self._data[macaddr][field]
+        return self._data[macaddr].get(field, None)
 
     def light_toggle(self, macaddr):
         if macaddr not in self._data:
@@ -152,9 +159,11 @@ class AerogardenAPI():
                 garden["plantedName"] = \
                     base64.b64decode(garden["plantedName"]).decode('utf-8')
 
-            gardenmac = garden["airGuid"]
+            id = garden.get("configID", None)
+            gardenmac = garden["airGuid"] + '-' + ('' if id is None else str(id))
             data[gardenmac] = garden
 
+        _LOGGER.debug('Updating data {}'.format(data))
         self._data = data
         return True
        
@@ -176,9 +185,9 @@ def setup(hass, config):
     # store the aerogarden API object into hass data system
     hass.data[DATA_AEROGARDEN] = ag
 
-    load_platform(hass, 'sensor', DOMAIN)
-    load_platform(hass, 'binary_sensor', DOMAIN)
-    load_platform(hass, 'light', DOMAIN)
+    load_platform(hass, 'sensor', DOMAIN, {}, config)
+    load_platform(hass, 'binary_sensor', DOMAIN, {}, config)
+    load_platform(hass, 'light', DOMAIN, {}, config)
 
     return True
 

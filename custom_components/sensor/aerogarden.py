@@ -21,7 +21,7 @@ class AerogardenSensor(Entity):
         self._icon = icon
         self._unit = unit
 
-        self._garden_name = self._aerogarden.garden_property(self._macaddr, "plantedName")
+        self._garden_name = self._aerogarden.garden_name(self._macaddr)
 
         self._name = "%s %s %s" % (aerogarden.SENSOR_PREFIX, self._garden_name, self._label)
         self._state = self._aerogarden.garden_property(self._macaddr, self._field)
