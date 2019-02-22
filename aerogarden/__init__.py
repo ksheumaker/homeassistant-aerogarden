@@ -176,9 +176,9 @@ def setup(hass, config):
     # store the aerogarden API object into hass data system
     hass.data[DATA_AEROGARDEN] = ag
 
-    load_platform(hass, 'sensor', DOMAIN)
-    load_platform(hass, 'binary_sensor', DOMAIN)
-    load_platform(hass, 'light', DOMAIN)
+    load_platform(hass, 'sensor', DOMAIN, {}, config)
+    load_platform(hass, 'binary_sensor', DOMAIN, {}, config)
+    load_platform(hass, 'light', DOMAIN, {}, config)
 
     return True
 
