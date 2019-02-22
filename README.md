@@ -13,13 +13,14 @@ Currently, the code is setup to query the AeroGarden servers every 30 seconds.
 (I expect other models to work, since this queries their cloud service not the garden directly)
 
 ## Setup
-Copy contents of the custom_components/ directory into your <HA-CONFIG>/custom_components directory (```/config/custom_components``` on hassio)
+Copy contents of the aerogarden/ directory into your <HA-CONFIG>/custom_components/aerogarden directory (```/config/custom_components``` on hassio)
 
 Your directory structure should look like this:
 ```
-   config/custom_components/aerogarden.py
-   config/custom_components/binary_sensor/aerogarden.py
-   config/custom_components/sensor/aerogarden.py
+   config/custom_components/aerogarden/__init__.py
+   config/custom_components/aerogarden/binary_sensor.py
+   config/custom_components/aerogarden/sensor.py
+   config/custom_components/aerogarden/light.py
 ```
 ## Configuration
 Add the following snippet into your ```configuration.yaml```  replace [EMAIL] and [PASSWORD] with the account information you use in the AeroGarden phone app.
