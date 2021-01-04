@@ -1,6 +1,9 @@
 # homeassistant-aerogarden
 This is a custom component for [Home Assistant](http://home-assistant.io) that adds support for the Miracle Grow [AeroGarden](http://www.aerogarden.com) Wifi hydroponic gardens.
 
+# !!UPDATE!!
+I no longer have an aerogarden, and don't use this component anymore - so I can't verify if it works or not.  Sorry about that, but looking for someone that would want to take this on, and take over any development.
+
 ## Background
 This was done without help from the AeroGarden people. As far as I can tell they post no public API. I took inspiration and code from the code in this [forum post by epotex](https://community.home-assistant.io/t/first-timer-trying-to-convert-a-working-script-to-create-support-for-a-new-platform).
 
