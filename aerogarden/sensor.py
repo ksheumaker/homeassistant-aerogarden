@@ -21,7 +21,7 @@ class AerogardenSensor(Entity):
         self._icon = icon
         self._unit = unit
 
-        self._garden_name = self._aerogarden.garden_property(self._macaddr, "plantedName")
+        self._garden_name = self._aerogarden.garden_name(self._macaddr)
 
         self._name = "%s %s %s" % (aerogarden.SENSOR_PREFIX, self._garden_name, self._label)
         self._state = self._aerogarden.garden_property(self._macaddr, self._field)
@@ -65,6 +65,11 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
             "label" : "nutrient",
             "icon" : "mdi:calendar-clock",
             "unit" : "Days"
+        },
+        "pumpLevel" : { 
+            "label" : "pump_level",
+            "icon" : "mdi:water-percent",
+            "unit" : "Fill Level"
         },
     }
 
