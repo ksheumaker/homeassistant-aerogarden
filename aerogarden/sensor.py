@@ -66,6 +66,11 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
             "icon" : "mdi:calendar-clock",
             "unit" : "Days"
         },
+        "pumpLevel" : { 
+            "label" : "pump_level",
+            "icon" : "mdi:water-percent",
+            "unit" : "Fill Level"
+        },
     }
 
     for garden in ag.gardens:

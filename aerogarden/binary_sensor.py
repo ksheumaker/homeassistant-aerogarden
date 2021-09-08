@@ -1,7 +1,7 @@
 import logging
 
 
-from homeassistant.components.binary_sensor import BinarySensorDevice
+from homeassistant.components.binary_sensor import BinarySensorEntity
 
 from .. import aerogarden
 
@@ -9,7 +9,7 @@ _LOGGER = logging.getLogger(__name__)
 
 DEPENDENCIES = ['aerogarden']
 
-class AerogardenBinarySensor(BinarySensorDevice):
+class AerogardenBinarySensor(BinarySensorEntity):
 
     def __init__(self, macaddr, aerogarden_api, field, label=None, icon=None):
 

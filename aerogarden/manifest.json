@@ -1,0 +1,10 @@
+{
+  "domain": "aerogarden",
+  "name": "Aerogarden",
+  "documentation": "https://",
+  "dependencies": [],
+  "codeowners": [],
+  "requirements": [],
+  "iot_class": "cloud_polling",
+  "version": "0.0.1"
+}

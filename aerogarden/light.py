@@ -1,14 +1,14 @@
 import logging
 
 
-from homeassistant.components.light import Light
+from homeassistant.components.light import LightEntity
 from .. import aerogarden
 
 _LOGGER = logging.getLogger(__name__)
 
 DEPENDENCIES = ['aerogarden']
 
-class AerogardenLight(Light):
+class AerogardenLight(LightEntity):
 
     def __init__(self, macaddr, aerogarden_api, field="lightStat", label="light"):
 
